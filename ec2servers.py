@@ -99,7 +99,9 @@ with open("ec2servers.csv", newline="") as csvfile:
 
 # check installations - awsid, etc comes from keys.py
 prod = {}
-for account in ("prod1","prod2"):
+account = "prod"
+if True:
+#for account in ("prod"):
   (instances,prod,servers) = analyzeInstances(account, awsid[account], awskey[account], awsregion[account], servercost)
 
   # print results
@@ -115,8 +117,9 @@ for account in ("prod1","prod2"):
   for k in prod:
     print(f"{k}={prod[k]}", end ="")
     i = i + 1
-    if i < len(edpprod):
-      print("&", end = "")
-    else:
-      print()
+    #if i < len(edpprod):
+    #  print("&", end = "")
+    #else:
+    #  print()
+    print()
 
