@@ -49,6 +49,11 @@ def analyzeInstances(account, id, key, region, cost):
       instance_type = instance["InstanceType"]
       print(instance_type)
       name = instance["Tags"]
+      if "PublicIpAddress" in instance:
+        publicip = instance["PublicIpAddress"]
+      else:
+        publicip = "n/a"
+      ip = instance["PrivateIpAddress"]
 
       instancecost = "N/A"
       if instance_type in cost:
@@ -62,7 +67,7 @@ def analyzeInstances(account, id, key, region, cost):
           print("NF",kv["Key"],kv["Value"], instance_id, instance_type)
         else:
           print(kv["Key"],kv["Value"], instance_id, instance_type)
-
+      print("IPs=", publicip, ip)
       print("CE=",clusterelement)
       if "N/A" in clusterelement:
         # keep track of cost not allocated 
